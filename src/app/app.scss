@@ -1,13 +1,21 @@
 /* src/app/app.scss */
 :root {
-  --bg: #fff;
-  --text: #222;
-  --accent: #7a5b4a;
-  --accent-dark: #4a3b33;
+  --bg: #fff;                /* fondo general blanco puro */
+  --text: #222;              /* texto principal oscuro */
+  --accent: #7a5b4a;         /* color principal botones/activo */
+  --accent-dark: #4a3b33;    /* texto / títulos */
+  --nav-bg: #f7f2eb;         /* navbar cálido, marrón muy suave */
+  --nav-hover: rgba(122,91,74,0.1); /* hover cálido y ligero */
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: var(--text); background: var(--bg); }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: var(--bg);
+}
 
 .container {
   max-width: 980px;
@@ -18,7 +26,7 @@ body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Robo
 /* Header / Navbar */
 .site-header {
   border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: linear-gradient(180deg, #fff, #fbf9f7);
+  background: linear-gradient(180deg, #f7f2eb 0%, #fdf7f0 100%);
 }
 
 .site-header .container {
@@ -57,7 +65,7 @@ body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Robo
 }
 
 .nav-list a:hover {
-  background: rgba(122,91,74,0.06);
+  background: var(--nav-hover);
 }
 
 .nav-list a.active,
@@ -77,12 +85,36 @@ body { margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Robo
 }
 
 /* Layout */
-main.container { padding: 1.5rem 0; min-height: calc(100vh - 64px - 48px); }
-.site-footer { text-align: center; font-size: 0.9rem; padding: 1rem 0; color: rgba(0,0,0,0.6); }
+main.container {
+  padding: 1.5rem 0;
+  min-height: calc(100vh - 64px - 48px);
+}
+
+.site-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+  color: rgba(0,0,0,0.6);
+}
 
 /* Responsive */
 @media (max-width: 700px) {
-  .nav-list { display: none; position: absolute; right: 1rem; top: 64px; background: white; border: 1px solid rgba(0,0,0,0.06); padding: .5rem; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); flex-direction: column; }
-  .nav-toggle { display: block; }
-  .nav-list.show { display: flex; }
+  .nav-list {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 64px;
+    background: var(--nav-bg);
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: .5rem;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    flex-direction: column;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-list.show {
+    display: flex;
+  }
 }
