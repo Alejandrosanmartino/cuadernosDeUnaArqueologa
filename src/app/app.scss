@@ -1,120 +1,193 @@
-/* src/app/app.scss */
-:root {
-  --bg: #fff;                /* fondo general blanco puro */
-  --text: #222;              /* texto principal oscuro */
-  --accent: #7a5b4a;         /* color principal botones/activo */
-  --accent-dark: #4a3b33;    /* texto / títulos */
-  --nav-bg: #f7f2eb;         /* navbar cálido, marrón muy suave */
-  --nav-hover: rgba(122,91,74,0.1); /* hover cálido y ligero */
-}
+  /* src/app/app.scss */
 
-* { box-sizing: border-box; }
+  /* ====================== */
+  /* Variables de color     */
+  /* ====================== */
+  :root {
+    --bg: #fff;                /* fondo general blanco puro */
+    --text: #222;              /* texto principal oscuro */
+    --accent: #7a5b4a;         /* color principal botones/activo */
+    --accent-dark: #4a3b33;    /* texto / títulos / hover activo */
+    --nav-bg: #97651d;         /* navbar cálido, marrón muy suave */
+    --nav-hover: rgba(122, 91, 74, 0.1); /* hover cálido y ligero */
+  }
 
-body {
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--text);
-  background: var(--bg);
-}
+  /* ====================== */
+  /* Global                 */
+  /* ====================== */
+  * {
+    box-sizing: border-box;
+  }
 
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--text);
+    background: var(--bg);
+  }
 
-/* Header / Navbar */
-.site-header {
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: linear-gradient(180deg, #f7f2eb 0%, #fdf7f0 100%);
-}
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 
-.site-header .container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  height: 64px;
-}
+  /* ====================== */
+  /* Header / Navbar        */
+  /* ====================== */
+  .site-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg, #f7f2eb 0%, #fdf7f0 100%);
+  }
 
-.brand {
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--accent-dark);
-  font-size: 1.05rem;
-}
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 64px;
+  }
 
-.nav {
-  margin-left: auto;
-}
+  /* Marca: "Cuadernos de una Arqueóloga" */
+  .brand {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--accent-dark);
+    font-size: 1.05rem;
+    font-family: 'Roboto', sans-serif !important;
+    letter-spacing: 0.5px;
+  }
 
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
+  .nav {
+    margin-left: auto;
+  }
 
-.nav-list a {
-  text-decoration: none;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  color: var(--text);
-  font-weight: 500;
-}
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
 
-.nav-list a:hover {
-  background: var(--nav-hover);
-}
+  /* Enlaces del navbar */
+  .nav-list a {
+    text-decoration: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    color: var(--text) !important;
+    font-weight: 500;
+    transition: 0.2s ease;
+  }
 
-.nav-list a.active,
-.nav-list a[aria-current="page"] {
-  background: var(--accent);
-  color: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+  /* Hover normal (cuando no es la ruta activa) */
+  .nav-list a:hover {
+    background: var(--nav-hover);
+    color: var(--accent-dark) !important;
+  }
 
-/* simple mobile collapse (no JS required for basic show/hide) */
-.nav-toggle {
-  display: none;
-  margin-left: auto;
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-}
+  /* Enlace activo (ruta actual) */
+  .nav-list a.active,
+  .nav-list a[aria-current="page"] {
+    background: var(--accent) !important;
+    color: rgb(87, 48, 48) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
 
-/* Layout */
-main.container {
-  padding: 1.5rem 0;
-  min-height: calc(100vh - 64px - 48px);
-}
+  /* Hover sobre enlace activo */
+  .nav-list a.active:hover,
+  .nav-list a[aria-current="page"]:hover {
+    background: var(--accent-dark) !important;
+    color: rgb(87, 48, 48) !important;
+  }
+
+  /* Botón de menú móvil (si lo usas) */
+  .nav-toggle {
+    display: none;
+    margin-left: auto;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+  }
+
+  /* ====================== */
+  /* Layout general         */
+  /* ====================== */
+  main.container {
+    padding: 1.5rem 0;
+    min-height: calc(100vh - 64px - 48px);
+  }/* ====================== */
+/* Footer fijo y pequeño  */
+/* ====================== */
 
 .site-footer {
+  position: fixed;        /* siempre visible */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent-dark);  /* marrón oscuro */
+  color: #1b1003;                  /* texto beige claro */
   text-align: center;
-  font-size: 0.9rem;
-  padding: 1rem 0;
-  color: rgba(0,0,0,0.6);
+  padding: 0.45rem 0.5rem;         /* altura pequeña */
+  font-size: 0.8rem;               /* texto discreto */
+  border-top: 1px solid rgba(255,255,255,0.15);
+  z-index: 1000;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
-  .nav-list {
-    display: none;
-    position: absolute;
-    right: 1rem;
-    top: 64px;
-    background: var(--nav-bg);
-    border: 1px solid rgba(0,0,0,0.06);
-    padding: .5rem;
-    border-radius: 6px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    flex-direction: column;
-  }
-  .nav-toggle {
-    display: block;
-  }
-  .nav-list.show {
-    display: flex;
-  }
+.site-footer p {
+  margin: 0.15rem 0;
 }
+
+/* enlaces */
+.site-footer a {
+  color: #fdf7f0;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.25rem;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer a:hover {
+  opacity: 0.75;
+}
+
+/* líneas específicas */
+.footer-copy {
+  opacity: 0.85;
+}
+
+.footer-links,
+.footer-social {
+  opacity: 0.9;
+  font-size: 0.75rem;
+}
+.home-hero {
+  padding: 4rem 1rem 4rem;
+}
+
+
+  /* ====================== */
+  /* Responsive             */
+  /* ====================== */
+  @media (max-width: 700px) {
+    .nav-list {
+      display: none;
+      position: absolute;
+      right: 1rem;
+      top: 64px;
+      background: var(--nav-bg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      flex-direction: column;
+    }
+
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-list.show {
+      display: flex;
+    }
+  }
