@@ -1,4 +1,48 @@
-<p>
-  contacto works!
-</p>
-AAAAAAAAAAAAAAAAAAA
+<section class="contact-wrapper">
+  <h2>Contacto</h2>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+
+    <!-- Nombre -->
+    <div class="form-group">
+      <label>Nombre *</label>
+      <input type="text" formControlName="nombre" class="form-control" />
+      <div class="error" *ngIf="contactForm.get('nombre')?.touched && contactForm.get('nombre')?.invalid">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" formControlName="email" class="form-control" />
+      <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+        Debes introducir un email válido.
+      </div>
+    </div>
+
+    <!-- Asunto -->
+    <div class="form-group">
+      <label>Asunto</label>
+      <input type="text" formControlName="asunto" class="form-control" />
+    </div>
+
+    <!-- Mensaje -->
+    <div class="form-group">
+      <label>Mensaje *</label>
+      <textarea formControlName="mensaje" rows="5" class="form-control"></textarea>
+      <div class="error" *ngIf="contactForm.get('mensaje')?.touched && contactForm.get('mensaje')?.invalid">
+        El mensaje es obligatorio.
+      </div>
+    </div>
+
+    <!-- Botón ENVIAR -->
+    <button type="submit" class="btn-enviar" [disabled]="loading">
+      {{ loading ? 'Enviando...' : 'Enviar mensaje' }}
+    </button>
+
+    <!-- Mensajes de éxito/error -->
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</section>
